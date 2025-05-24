@@ -154,10 +154,9 @@ function login() {
       message.style.color = "green";
       message.textContent = "Login successful!";
 
-      // Redirect to index.html after 1 second
-      // setTimeout(() => {
-      //   window.location.href = "index.html";
-      // }, 1000);
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 1000);
 
       console.log("User:", userCredential.user);
     })
