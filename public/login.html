@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Firebase Login</title>
+  <link rel="stylesheet" href="../src/scss/login.css">
+</head>
+<body>
+
+    
+<!-- Login form -->
+<form id="Login" action="" method="post" onsubmit="return false;">
+  <!-- Left section of the form -->
+  <div class="left">
+    <div>
+      <!-- Welcome message and registration link -->
+      <p>Hello, Welcome!</p>
+      <a href="signup.html">Don't have an account? </a>
+      <!-- Changed button to a link styled as button for navigation -->
+      <a href="signup.html" class="btn-register">Register</a>
+    </div>
+  </div>
+
+  <!-- Right section of the form -->
+  <div class="right">
+    <div>
+      <!-- Login heading -->
+      <h1>Login</h1>
+
+      <!-- Email input -->
+      <input type="email" name="email" id="email" placeholder="Email" />
+      <span class="material-symbols-outlined person"></span>
+
+      <!-- Password input -->
+      <input type="password" name="password" id="password" placeholder="Password" />
+      <span class="material-symbols-outlined lock"></span>
+
+      <a href="">Forgot Password?</a>
+
+      <!-- Login button (initially disabled) -->
+      <button id="loginBtn" disabled>Login</button>
+
+      <!-- Social login options -->
+      <p>or login with social platforms</p>
+      <p id="message"></p>
+      <div>
+        <!-- Add social login buttons here if needed -->
+      </div>
+    </div>
+  </div>
+</form>
+
+<script>
+  // Wait for the DOM to load
+  document.addEventListener('DOMContentLoaded', () => {
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const loginBtn = document.getElementById("loginBtn");
+    const form = document.getElementById("Login");
+
+    // Enable login button only if both fields have input
+    function checkInputs() {
+      loginBtn.disabled = !(emailInput.value.trim() && passwordInput.value.trim());
+    }
+
+    emailInput.addEventListener("input", checkInputs);
+    passwordInput.addEventListener("input", checkInputs);
+
+    // Attach login function to form submission
+    form.addEventListener('submit', (e) => {
+      e.preventDefault(); // prevent form from reloading page
+      login();
+    });
+  });
+
+  // Your login function should be defined in firebase.js or inline here
+</script>
+
+  <!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script>
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  const loginBtn = document.getElementById("loginBtn");
+
+  function checkInputs() {
+    const emailFilled = emailInput.value.trim() !== "";
+    const passwordFilled = passwordInput.value.trim() !== "";
+    loginBtn.disabled = !(emailFilled && passwordFilled);
+  }
+
+  emailInput.addEventListener("input", checkInputs);
+  passwordInput.addEventListener("input", checkInputs);
+</script>
+
+
+  <!-- Firebase Config and Login Script -->
+  <script src="../src/js/firebase.js"></script>
+</body>
+</html>
