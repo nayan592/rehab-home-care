@@ -242,3 +242,54 @@ auth.onAuthStateChanged(function(user) {
     }
   }
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("In appointment submission handler");
+  const appointmentForm = document.getElementById("appointmentForm");
+
+  if (appointmentForm) {
+    appointmentForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      // Collect form data
+      const name = document.getElementById("inputName").value;
+      const phone = document.getElementById("inputPhone").value;
+      const email = document.getElementById("inputEmail").value;
+      const serviceType = document.getElementById("inputCategory").value;
+      const address = document.getElementById("inputAddress").value;
+      const city = document.getElementById("inputCity").value;
+      const date = document.getElementById("inputDate").value;
+      const time = document.getElementById("inputTime").value;
+      const instructions = document.getElementById("inputInstructions").value;
+
+      // Basic validation
+      if (!name || !phone || !email || !serviceType || !address || !city || !date || !time) {
+        alert("Please fill in all required fields.");
+        return;
+      }
+
+      try {
+        await db.collection("appointments").add({
+          name,
+          phone,
+          email,
+          serviceType,
+          address,
+          city,
+          preferredDate: date,
+          preferredTime: time,
+          instructions,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+
+        alert("Appointment submitted successfully!");
+        appointmentForm.reset(); // Clear the form
+      } catch (error) {
+        console.error("Error submitting appointment:", error);
+        alert("There was an error submitting the appointment. Please try again.");
+      }
+    });
+  }
+});
