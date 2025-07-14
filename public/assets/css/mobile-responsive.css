@@ -1,0 +1,589 @@
+/* Mobile Responsive Styles for Better UX */
+
+/* Hero Section Mobile Optimization */
+@media (max-width: 767.98px) {
+  /* Make hero section more compact on mobile */
+  .hero-section {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    min-height: 60vh !important;
+  }
+  
+  /* Reduce hero image size significantly on mobile */
+  .hero-image {
+    width: 70% !important;
+    max-width: 280px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    display: block !important;
+    padding-top: 1rem !important;
+  }
+  
+  /* Make hero text more compact */
+  .hero-text {
+    padding: 1rem 0 !important;
+  }
+  
+  /* Reduce font sizes for better mobile fit */
+  .hero-text h1 {
+    font-size: 1.8rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .hero-text p {
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  /* Reduce button size on mobile */
+  .btn-lg {
+    padding: 0.7rem 1.5rem !important;
+    font-size: 0.95rem !important;
+  }
+}
+
+/* Tablet optimization */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .hero-image {
+    width: 80% !important;
+    max-width: 350px !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+  
+  .hero-section {
+    min-height: 70vh !important;
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  
+  /* Tight gaps on tablet */
+  section {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  
+  .col-12.py-3 {
+    padding-top: 1rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  /* Tight spacing between sections on tablet */
+  section + section {
+    padding-top: 0.8rem !important;
+  }
+  
+  #departments {
+    padding-bottom: 0.8rem !important;
+  }
+  
+  #about {
+    padding-top: 0.8rem !important;
+    padding-bottom: 0.8rem !important;
+  }
+  
+  /* Blog post images on tablet */
+  .card-img-top {
+    height: 150px !important;
+    object-fit: cover !important;
+  }
+  
+  .card-span {
+    max-width: 320px !important;
+  }
+  
+  /* Footer tablet optimization */
+  footer {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  footer .fab {
+    font-size: 1.4rem !important;
+    width: 45px !important;
+    height: 45px !important;
+  }
+  
+  footer .text-decoration-none {
+    font-size: 1rem !important;
+  }
+}
+
+/* Desktop spacing adjustments - tight */
+@media (min-width: 992px) {
+  /* Tight spacing between sections on desktop */
+  section + section {
+    padding-top: 1.5rem !important;
+  }
+  
+  #departments {
+    padding-bottom: 1rem !important;
+  }
+  
+  #about {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  
+  /* Minimal space between About Us and Our Doctors on desktop */
+  section.pb-0 + section.py-5 {
+    padding-top: 1rem !important;
+  }
+  
+  /* Overall tight section spacing on desktop */
+  section:not(.hero-section) {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  
+  /* Blog post images on desktop */
+  .card-img-top {
+    height: 180px !important;
+    object-fit: cover !important;
+  }
+  
+  .card-span {
+    max-width: 100% !important;
+  }
+  
+  /* Footer desktop optimization */
+  footer {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+  
+  footer .fab {
+    font-size: 1.5rem !important;
+    width: 50px !important;
+    height: 50px !important;
+  }
+  
+  footer .text-decoration-none {
+    font-size: 1.1rem !important;
+    margin: 0 0.5rem !important;
+  }
+}
+
+/* Ensure appointment section is visible on mobile */
+@media (max-width: 767.98px) {
+  #Appointment {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  .appointment-form {
+    padding: 1rem !important;
+  }
+  
+  .appointment-form .form-control,
+  .appointment-form .form-select {
+    font-size: 0.9rem !important;
+    padding: 0.6rem !important;
+  }
+}
+
+/* General mobile section spacing */
+@media (max-width: 767.98px) {
+  section {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  /* Reduce excessive padding on mobile */
+  .pt-7 {
+    padding-top: 1rem !important;
+  }
+  
+  .py-5 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  .py-xxl-10 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+}
+
+/* Fix navbar spacing on mobile */
+@media (max-width: 767.98px) {
+  .navbar {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  .navbar-brand img {
+    width: 40px !important;
+  }
+}
+
+/* About Us section mobile optimization */
+@media (max-width: 767.98px) {
+  .about-image {
+    width: 80% !important;
+    max-width: 250px !important;
+    margin: 0 auto 2rem auto !important;
+    display: block !important;
+  }
+  
+  .about-text {
+    text-align: center !important;
+    padding: 0 1rem !important;
+  }
+  
+  .about-text h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .about-text p {
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* Department icons mobile optimization */
+@media (max-width: 767.98px) {
+  .deparment-icon, .deparment-icon-hover {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  
+  .icon-box p {
+    font-size: 0.85rem !important;
+  }
+}
+
+/* Card spacing on mobile */
+@media (max-width: 767.98px) {
+  .card {
+    margin-bottom: 1rem !important;
+  }
+  
+  .card-body {
+    padding: 1rem !important;
+  }
+  
+  /* Make blog post card images smaller */
+  .card-img-top {
+    height: 120px !important;
+    object-fit: cover !important;
+  }
+  
+  /* Make blog post cards more compact */
+  .card-span {
+    max-width: 280px !important;
+    margin: 0 auto 1rem auto !important;
+  }
+  
+  /* Reduce card content padding */
+  .card-span .card-body {
+    padding: 0.8rem !important;
+  }
+  
+  /* Make blog post titles smaller */
+  .card-span .card-body h5 {
+    font-size: 0.9rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  /* Make blog post text smaller */
+  .card-span .card-body span {
+    font-size: 0.75rem !important;
+  }
+  
+  /* Footer mobile optimization */
+  footer {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  
+  /* Social media icons on mobile */
+  footer .fab {
+    font-size: 1.2rem !important;
+    padding: 0.5rem !important;
+    border-radius: 50% !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  footer .fab:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-2px) !important;
+  }
+  
+  /* Navigation links on mobile */
+  footer .text-decoration-none {
+    font-size: 0.9rem !important;
+    padding: 0.3rem 0.5rem !important;
+  }
+  
+  /* Copyright text on mobile */
+  footer .small {
+    font-size: 0.8rem !important;
+  }
+  
+  /* Reduce gaps between footer sections */
+  footer .mb-3 {
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Balanced spacing adjustments for mobile */
+@media (max-width: 767.98px) {
+  /* Tight section title spacing */
+  .col-12.py-3 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 0.3rem !important;
+  }
+  
+  /* Reduce gap after section titles - tight spacing */
+  .col-12.py-3 h1 {
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Departments section - minimal gap to icons */
+  #departments {
+    padding-bottom: 0.5rem !important;
+  }
+  
+  /* Minimal gap between departments title and icons */
+  #departments + section {
+    padding-top: 0.8rem !important;
+  }
+  
+  /* Department icons section - very tight spacing */
+  .row.py-5 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  /* Decent margins for department icons */
+  .col-auto {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  /* Doctors section - minimal gap after title */
+  section.pb-0 {
+    padding-bottom: 0.2rem !important;
+  }
+  
+  /* Doctors carousel section - tight spacing */
+  section.py-5:nth-of-type(4) {
+    padding-top: 0.2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  /* Additional doctors section fixes */
+  section.py-5:has(.carousel) {
+    padding-top: 0.2rem !important;
+  }
+  
+  /* Target doctors section more specifically */
+  section.py-5 .carousel {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* Reduce carousel inner spacing */
+  .carousel-inner {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  /* Reduce spacing in carousel items */
+  .carousel-item .row {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* Aggressive carousel spacing fixes */
+  .carousel .row.h-100 {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* Target the specific carousel classes */
+  .carousel .row.h-100.m-lg-7 {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  .carousel .row.h-100.mx-3 {
+    margin-top: 0 !important;
+  }
+  
+  .carousel .row.h-100.mt-6 {
+    margin-top: 0 !important;
+  }
+  
+  .carousel .row.h-100.mx-md-4 {
+    margin-top: 0 !important;
+  }
+  
+  .carousel .row.h-100.my-md-7 {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Carousel cards - balanced spacing */
+  .carousel-item .col-md-4 {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  /* Keep card padding normal */
+  .carousel-item .card-body {
+    padding: 1.5rem 1rem !important;
+  }
+  
+  /* Appointment section - decent spacing */
+  #Appointment {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  /* About us section - balanced spacing */
+  section.py-5:nth-of-type(3) {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  /* Eye care section - keep decent padding */
+  .bg-secondary {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+  
+  /* Blog posts section - balanced spacing */
+  section:last-of-type {
+    padding-top: 1.5rem !important;
+  }
+  
+  /* Specific heading-to-content gaps - tight spacing */
+  
+  /* OUR DEPARTMENTS heading to icons */
+  #departments .container .row .col-12 {
+    padding-bottom: 0.3rem !important;
+  }
+  
+  /* OUR DOCTORS heading to cards */
+  section.pb-0 .container .row .col-12 {
+    padding-bottom: 0.1rem !important;
+  }
+  
+  /* More aggressive doctors section spacing fixes */
+  section.pb-0 .container .row {
+    margin-bottom: 0 !important;
+  }
+  
+  /* Target the doctors section container specifically */
+  section.pb-0 .container {
+    padding-bottom: 0 !important;
+  }
+  
+  /* Remove any background holder spacing in doctors section */
+  section.pb-0 .bg-holder {
+    margin-bottom: 0 !important;
+  }
+  
+  /* APPOINTMENT heading to form */
+  #Appointment .container .row .col-12 {
+    padding-bottom: 0.8rem !important;
+  }
+  
+  /* RECENT BLOGPOSTS heading to cards */
+  section:has(.card-span) .container .row .col-12 {
+    padding-bottom: 0.3rem !important;
+  }
+  
+  /* Maintain normal container padding */
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Very tight section spacing */
+  section:not(.hero-section) {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  /* Minimal spacing between consecutive sections */
+  section + section {
+    padding-top: 0.3rem !important;
+  }
+  
+  /* Specific section spacing adjustments - very tight */
+  #departments {
+    padding-bottom: 0.3rem !important;
+  }
+  
+  #about {
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+  }
+  
+  /* Almost no space between About Us and Our Doctors */
+  section.pb-0 + section.py-5 {
+    padding-top: 0.3rem !important;
+  }
+}
+
+/* Appointment Form Desktop Optimization */
+@media (min-width: 768px) {
+  /* Constrain appointment form width on desktop/tablet */
+  .appointment-form {
+    max-width: 800px !important;
+    margin: 0 auto !important;
+    padding: 2rem !important;
+  }
+  
+  /* Appointment section container */
+  #Appointment .container {
+    max-width: 900px !important;
+  }
+  
+  /* Better spacing for form elements on larger screens */
+  .appointment-form .form-control,
+  .appointment-form .form-select {
+    padding: 0.8rem !important;
+    font-size: 1rem !important;
+  }
+  
+  /* Make submit button less stretched */
+  .appointment-form .btn {
+    max-width: 300px !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* Desktop-specific appointment form styling */
+@media (min-width: 992px) {
+  .appointment-form {
+    max-width: 700px !important;
+    padding: 2.5rem !important;
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* Center the appointment section content */
+  #Appointment .container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  /* Better form field spacing on desktop */
+  .appointment-form .col-md-6,
+  .appointment-form .col-md-12 {
+    margin-bottom: 1rem !important;
+  }
+} 
