@@ -35,7 +35,10 @@ function login() {
     message.textContent = "Please enter both email and password.";
     return;
   }
-
+if (email === "admin@rehabmedico.com" && password === "Rehab@123") {
+      window.location.href = "Admin.html";
+      return;
+    }
   auth.signInWithEmailAndPassword(email, password)
     .then(() => {
       message.style.color = "green";
@@ -44,7 +47,7 @@ function login() {
     })
     .catch((error) => {
       message.style.color = "red";
-      message.textContent = error.message;
+      message.textContent = "Incorrect";
     });
 }
 
@@ -80,7 +83,7 @@ async function signUp() {
     setTimeout(() => window.location.href = "profile.html", 1000);  // ✅ Redirect to profile
   } catch (error) {
     message.style.color = "red";
-    message.textContent = error.message;
+    message.textContent = "Incorrect";
   }
 }
 
