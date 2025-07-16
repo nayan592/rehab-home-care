@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(90deg, #ffffff 0%, #c9d6ff 100%);
+      min-height: 100vh;
+      padding: 40px 0;
+    }
+    .profile-container {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .profile-info {
+      margin-bottom: 10px;
+    }
+    .logout-btn {
+      margin-top: 20px;
+    }
+    .edit-btn {
+      font-size: 0.9rem;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profile-container">
+    <h2>User Profile</h2>
+    <div id="profileDetails">
+      <p class="profile-info"><strong>Name:</strong> <span id="userName"></span></p>
+      <p class="profile-info"><strong>Email:</strong> <span id="userEmail"></span></p>
+      <p class="profile-info"><strong>Phone:</strong> <span id="userPhone"></span></p>
+      <button class="btn btn-sm btn-primary edit-btn" onclick="editProfile()">Edit Profile</button>
+
+      <div id="editProfileForm" style="display:none;" class="mt-3">
+        <input id="editName" class="form-control mb-2" placeholder="Edit Name">
+        <input id="editPhone" class="form-control mb-2" placeholder="Edit Phone">
+        <button class="btn btn-success btn-sm" onclick="saveProfile()">Save</button>
+        <button class="btn btn-secondary btn-sm" onclick="cancelEditProfile()">Cancel</button>
+      </div>
+
+      <div id="appointmentsSection">
+        <h4 class="mt-4">Appointments:</h4>
+        <div id="appointmentsList" class="mt-2"></div>
+      </div>
+    </div>
+
+    <button class="btn btn-danger btn-block logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCbzuu2wUiiz3SYcsns7-lyCBMAl6emqWw",
+      authDomain: "rehab-home-care.firebaseapp.com",
+      projectId: "rehab-home-care",
+      storageBucket: "rehab-home-care.firebasestorage.app",
+      messagingSenderId: "464642242934",
+      appId: "1:464642242934:web:e9a2c2be98775f25d8a257",
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    let currentUser;
+
+    auth.onAuthStateChanged(async (user) => {
+      if (!user) return window.location.href = "login.html";
+      currentUser = user;
+      const doc = await db.collection("users").doc(user.uid).get();
+      if (doc.exists) {
+        const data = doc.data();
+        document.getElementById("userName").textContent = data.user_name;
+        document.getElementById("userEmail").textContent = data.email;
+        document.getElementById("userPhone").textContent = data.phone;
+  
+
+        renderAppointments(data.appointments || []);
+      }
+    });
+
+    function renderAppointments(appointments) {
+      const list = document.getElementById("appointmentsList");
+      if (!appointments.length) return list.innerHTML = "<p class='text-muted'>No appointments found.</p>";
+      list.innerHTML = appointments.map((appt, i) => {
+        const appointmentTime = new Date(`${appt.preferredDate}T${appt.preferredTime || '00:00'}`);
+        const now = new Date();
+        const diffHrs = (appointmentTime - now) / (1000 * 60 * 60);
+        const canEdit = diffHrs > 5;
+        return `
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">#${i + 1} - ${appt.serviceType}</h5>
+              <p><strong>Date:</strong> ${appt.preferredDate}, <strong>Time:</strong> ${appt.preferredTime}</p>
+              <p><strong>City:</strong> ${appt.city}, <strong>Address:</strong> ${appt.address}</p>
+              <p><strong>Phone:</strong> ${appt.phone}, <strong>Email:</strong> ${appt.email}</p>
+              <p><strong>Instructions:</strong> ${appt.instructions}</p>
+              ${canEdit ? `<button class="btn btn-warning btn-sm" onclick="editAppointment(${i})">Edit</button>` : '<small class="text-muted">Cannot edit within 5 hours</small>'}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function editProfile() {
+      document.getElementById("editProfileForm").style.display = "block";
+      document.getElementById("editName").value = document.getElementById("userName").textContent;
+      document.getElementById("editPhone").value = document.getElementById("userPhone").textContent;
+    }
+
+    function cancelEditProfile() {
+      document.getElementById("editProfileForm").style.display = "none";
+    }
+
+    async function saveProfile() {
+      const newName = document.getElementById("editName").value;
+      const newPhone = document.getElementById("editPhone").value;
+      await db.collection("users").doc(currentUser.uid).update({
+        user_name: newName,
+        phone: newPhone
+      });
+      document.getElementById("userName").textContent = newName;
+      document.getElementById("userPhone").textContent = newPhone;
+      cancelEditProfile();
+      alert("✅ Profile updated");
+    }
+
+    function logout() {
+      auth.signOut().then(() => window.location.href = "login.html");
+    }
+
+    function editAppointment(index) {
+      alert("⚙️ Edit appointment functionality can be implemented in a modal.");
+      // Optional: implement modal with pre-filled form and save changes to Firestore
+    }
+  </script>
+</body>
+</html>
