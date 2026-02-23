@@ -473,24 +473,23 @@
     padding-bottom: 0.3rem !important;
   }
   
-  /* OUR DOCTORS heading to cards */
-  section.pb-0 .container .row .col-12 {
-    padding-bottom: 0.1rem !important;
+  /* OUR DOCTORS section - match departments spacing */
+  #doctors {
+    padding-bottom: 0.5rem !important;
   }
   
-  /* More aggressive doctors section spacing fixes */
-  section.pb-0 .container .row {
-    margin-bottom: 0 !important;
+  #doctors + section {
+    padding-top: 0.8rem !important;
   }
   
-  /* Target the doctors section container specifically */
-  section.pb-0 .container {
-    padding-bottom: 0 !important;
+  #doctors .col-12.py-3 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 0.3rem !important;
   }
   
-  /* Remove any background holder spacing in doctors section */
-  section.pb-0 .bg-holder {
-    margin-bottom: 0 !important;
+  #doctors .col-12.py-3 h1 {
+    margin-bottom: 0.5rem !important;
+    text-align: center !important;
   }
   
   /* APPOINTMENT heading to form */
