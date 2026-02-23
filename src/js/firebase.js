@@ -372,33 +372,31 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    const user = auth.currentUser;
-    const guestId = getOrCreateGuestId();
-    if (user) {
-      appointmentData.userId = user.uid;
-      appointmentData.guestId = guestId;
-    } else {
-      appointmentData.guestId = guestId;
-      appointmentData.userId = null;
-    }
+       try {
+  // Save to central appointments collection
+  await db.collection("appointments").add(appointmentData);
 
-    try {
-      await db.collection(APPOINTMENTS_COLLECTION).add(appointmentData);
-      alert("Appointment submitted successfully!");
-      appointmentForm.reset();
-      loadMyAppointments();
-    } catch (err) {
-      console.error("Error saving appointment:", err);
-      alert("Failed to save appointment. " + (err.message || "Please try again."));
-    }
-  });
+  const userRef = db.collection("users").doc(user.uid);
+  const userDoc = await userRef.get();
 
-  if (document.getElementById("myAppointmentsList")) {
-    loadMyAppointments();
+  if (userDoc.exists && userDoc.data().appointments) {
+    // Field exists → use arrayUnion
+    await userRef.update({
+      appointments: firebase.firestore.FieldValue.arrayUnion(appointmentData)
+    });
+  } else {
+    // Field doesn't exist → set manually as array
+    await userRef.set({
+      appointments: [appointmentData]
+    }, { merge: true });
   }
-});
 
-// For profile edit button (profile page only)
-function editAppointmentByIndex(index) {
-  alert("Edit appointment can be implemented with a modal. Your appointments are saved and visible in My Appointments.");
+  alert("✅ Appointment submitted successfully!");
+  appointmentForm.reset();
+} catch (err) {
+  console.error("❌ Error submitting appointment:", err);
+  alert("❌ Failed to save appointment. " + err.message);
 }
+      });
+    });
+ 
